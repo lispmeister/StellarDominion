@@ -8,6 +8,12 @@
 
 **Projecting a Visible Emerald-Green Cross from the Moon's Northern Pole — Visible Across the Entire Contiguous United States**
 
+## Inspiration
+
+> For we are God’s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.
+
+— *Ephesians 2:10 (NIV)*
+
 ## A Cathedral on the Moon
 
 For as long as we have existed, humanity has looked up at the Moon and dreamed. Every civilization, every culture, every solitary soul on a dark night has felt the pull of that pale light. Now imagine changing what they see.
