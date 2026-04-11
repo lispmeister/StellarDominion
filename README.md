@@ -1,10 +1,10 @@
-# Lunar Laser Cross Project
+#Stellar Dominion
 
 [![Pylint](https://github.com/lispmeister/lunar-cross/actions/workflows/pylint.yml/badge.svg)](https://github.com/lispmeister/lunar-cross/actions/workflows/pylint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%20|%203.9%20|%203.10-blue)](lunar-cross-visualization.py)
 
-![Lunar Cross Promo](docs/images/lunar-cross-promo.jpeg?v=2)
+![Stellar Dominion Promo](docs/images/lunar-cross-promo.jpeg?v=2)
 
 **Projecting a Visible Emerald-Green Cross from the Moon's Northern Pole — Visible Across the Entire Contiguous United States**
 
