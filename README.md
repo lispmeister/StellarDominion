@@ -1,4 +1,4 @@
-#Stellar Dominion
+# Stellar Dominion
 
 [![Pylint](https://github.com/lispmeister/lunar-cross/actions/workflows/pylint.yml/badge.svg)](https://github.com/lispmeister/lunar-cross/actions/workflows/pylint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
