@@ -23,13 +23,29 @@
 \usepackage{epigraph}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{concrete}   % Concrete Roman text (Zapf/Knuth Concrete Mathematics)
-\usepackage{eulervm}    % Euler Virtual Math fonts
+
+
+% Libertine
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% captions
+\usepackage{caption}
+\captionsetup{font=small,labelfont={bf,color=emerald}}
+
+% ── Microtype ─────────────────────────────────────────────────────────────────
+\microtypesetup{
+  protrusion=true,
+  expansion=true,
+  final=true,
+  tracking=true,
+}
 
 % ── Fix fancyhdr headheight ───────────────────────────────────────────────────
 \setlength{\headheight}{14.5pt}
 \setlength{\columnsep}{14pt}
 \setlength{\emergencystretch}{3em}
+\hyphenation{phase-mo-du-la-ting}
 
 % ── Colors ────────────────────────────────────────────────────────────────────
 \definecolor{emerald}{RGB}{0,160,100}
@@ -119,6 +135,8 @@
 \noindent\begin{minipage}[c][\paperheight][c]{\paperwidth}
   \centering
   \includegraphics[width=\paperwidth,keepaspectratio=true]{images/lunar-cross-promo.jpeg}
+  \phantomsection
+  \addcontentsline{lof}{figure}{Lunar cross promotional visualization (cover)}
 \end{minipage}
 \restoregeometry
 \pagecolor{white}
@@ -170,6 +188,8 @@ of operations is \$72--192 million.
 \end{abstract}
 
 \tableofcontents
+\listoftables
+\listoffigures
 \twocolumn
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -202,7 +222,10 @@ development. What is missing is the will to build something this audacious.
 
 \subsection{Mission Parameters at a Glance}
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Mission parameters at a glance}
+\label{tab:mission-params}
 \begin{tabularx}{\linewidth}{XX}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\
@@ -220,7 +243,7 @@ Core project cost (excl.\ launch) & \$42--114 million \\
 Total lifecycle cost (incl.\ launch + ops) & \$72--192 million \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{System Architecture}
@@ -234,7 +257,10 @@ human presence is needed after commissioning.
 
 \subsection{What Starship Provides for Free}
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Resources inherited from the Starship HLS platform}
+\label{tab:starship-resources}
 \begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Resource} & \textbf{Benefit} \\
@@ -247,11 +273,15 @@ Comms & S-band/Ku-band supplemented by minimal custom avionics \\
 Structural durability & Stainless steel in vacuum; effectively indefinite life \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 \subsection{Stellar Dominion Subsystems}
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Stellar Dominion subsystems and key specifications}
+\label{tab:subsystems}
+\setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{lXX}
 \toprule
 \textbf{Subsystem} & \textbf{Function} & \textbf{Key spec} \\
@@ -267,7 +297,7 @@ Pointing assembly & Track Earth as Moon orbits & $< \ang{0.1}$ accuracy \\
 Avionics + comms & Housekeeping, telemetry & Minimal custom; shares Starship \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Optical Design}
@@ -285,7 +315,10 @@ CW SHG conversion efficiency is typically 60--80\%, yielding a combined wall-plu
 of $\approx$25--35\% (baseline: 30\%). This is an engineering development task, not a COTS
 solution.
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Fiber laser parameters (with SHG stage)}
+\label{tab:laser-params}
 \begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\
@@ -299,7 +332,7 @@ Rated lifetime & $> \num{100000}$ hours ($\approx$ 11 years) \\
 Mass (including SHG) & \SI{200}{\kilo\gram}--\SI{300}{\kilo\gram} \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 \subsection{Radiometric Power Requirement}
 
@@ -365,7 +398,10 @@ is listed in Section~\ref{sec:code-doe}.
 
 \subsection{Angular Geometry}
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Earth--Moon angular geometry for US coverage}
+\label{tab:angular-geometry}
 \begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Quantity} & \textbf{Value} \\
@@ -378,7 +414,7 @@ Cross arm thickness & \ang{0.05} \\
 Moon apparent diameter & \ang{0.5} \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Power System}
@@ -400,13 +436,16 @@ attenuate): $G_{\odot} = \SI{1361}{\watt\per\meter\squared}$.
 
 Operating in vacuum with no weather or oxidation, we use \textbf{bare}
 IMM-$\alpha$ (inverted metamorphic multi-junction) cells on lightweight Kapton
-substrate---no cover glass required~\cite{SolAero}. These cells are
+substrate --- no cover glass required~\cite{SolAero}. These cells are
 manufactured by Rocket Lab Space Systems, which acquired SolAero Technologies
 in 2022, and are commercially available through an established procurement
 path. This eliminates the largest single mass item in traditional space solar
 arrays.
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{SolAero IMM-$\alpha$ solar array parameters}
+\label{tab:solar-array}
 \begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\
@@ -417,7 +456,7 @@ Areal density & \SI{2}{\kilo\gram\per\meter\squared} deployed \\
 Deployment & Rollout panels unfurling from Starship hull \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 \begin{align}
   P_{\text{required}} &\approx \SI{20}{\kilo\watt} \quad \text{(see power budget)} \\
@@ -453,6 +492,8 @@ ships to aerospace and defense customers~\cite{Amprius}.
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Amprius SiCore battery energy density: cell vs.\ pack}
+\label{tab:battery-energy}
 \begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Level} & \textbf{Energy density} & \textbf{Notes} \\
@@ -470,7 +511,10 @@ LRO illumination models for Peary crater rim show worst-case darkness periods of
 The laser shuts down during eclipses (no observer sees an eclipsed Moon). Battery
 sustains avionics and thermal survival only, in two modes:
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Eclipse-mode power loads}
+\label{tab:eclipse-modes}
 \begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Mode} & \textbf{Load} & \textbf{Conditions} \\
@@ -479,7 +523,7 @@ Full survival & $\sim$\SI{1}{\kilo\watt} & Short eclipses ($\leq$72\,hr): full a
 Hibernation & $\sim$\SI{500}{\watt} & Extended eclipses ($>$72\,hr): battery heat + avionics keep-alive \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 The system uses ephemeris to predict eclipse duration before entry and selects the
 appropriate mode. Battery capacity (unchanged):
@@ -505,6 +549,8 @@ At \SI{280}{\watt\hour\per\kilo\gram} pack-level (Amprius):
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Steady-state power budget}
+\label{tab:power-budget}
 \begin{tabularx}{\linewidth}{Xrr}
 \toprule
 \textbf{Subsystem} & \textbf{Power (W)} & \textbf{Notes} \\
@@ -567,6 +613,8 @@ where $\varepsilon = 0.85$ (black anodized aluminum), $\sigma =
 
 \begin{table*}[!ht]
 \centering\small
+\caption{System mass budget}
+\label{tab:mass-budget}
 \begin{tabular}{lrp{5.5cm}}
 \toprule
 \textbf{Subsystem} & \textbf{Mass (kg)} & \textbf{Basis} \\
@@ -697,6 +745,8 @@ compensates with a gentle elevation adjustment well within its travel range.
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Pointing and tracking hardware}
+\label{tab:pointing}
 \begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Component} & \textbf{Spec} & \textbf{Heritage} \\
@@ -737,6 +787,8 @@ tilted away, the beam geometry is unchanged---the cross still covers the US.
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Monthly visible viewing hours for a mid-latitude US observer}
+\label{tab:viewing-hours}
 \begin{tabularx}{\linewidth}{lXrr}
 \toprule
 \textbf{Phase} & \textbf{Sky condition} & \textbf{Hours/night} & \textbf{Nights/month} \\
@@ -772,6 +824,8 @@ at \SI{2}{\kilo\gram\per\meter\squared}, the baseline wins decisively:
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Baseline vs.\ small-solar/burst-battery mass comparison}
+\label{tab:arch-comparison}
 \begin{tabularx}{\linewidth}{Xrrr}
 \toprule
 \textbf{Architecture} & \textbf{Solar (kg)} & \textbf{Battery (kg)} & \textbf{Total (kg)} \\
@@ -790,7 +844,10 @@ kept as-is.
 
 \subsection{Benefits of Sunday-Only Operation}
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Benefits of Sunday-only operation}
+\label{tab:sunday-benefits}
 \begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Benefit} & \textbf{Impact} \\
@@ -801,7 +858,7 @@ Ground operations & Sunday-only monitoring saves \$5--10M over 10 years \\
 Narrative resonance & The cross appears on the Sabbath; Easter Sunday is the natural inaugural event \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Cost Estimates}
@@ -813,6 +870,8 @@ space qualification).
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Core project and full lifecycle cost estimates (2025 USD)}
+\label{tab:costs}
 \begin{tabular}{lrrl}
 \toprule
 \textbf{Item} & \textbf{Low (\$M)} & \textbf{High (\$M)} & \textbf{Basis} \\
@@ -863,6 +922,8 @@ contract---and would be seen by orders of magnitude more people.
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Component rated lifetimes}
+\label{tab:lifetimes}
 \begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Component} & \textbf{Rated Life} & \textbf{Notes} \\
@@ -881,7 +942,10 @@ Pointing gimbal & 7--10 years & Wear item; oversize for life margin \\
 
 \subsection{Annual Operating Costs (Sunday Operation Mode)}
 
-\begin{center}
+\begin{table}[!ht]
+\centering\small
+\caption{Annual operating costs (Sunday-mode)}
+\label{tab:ops-costs}
 \begin{tabularx}{\linewidth}{Xrr}
 \toprule
 \textbf{Item} & \textbf{Low (\$/yr)} & \textbf{High (\$/yr)} \\
@@ -894,7 +958,7 @@ Contingency & 150\,000 & 300\,000 \\
 \textbf{Annual total} & \textbf{1\,000\,000} & \textbf{2\,800\,000} \\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 
 \noindent Ten-year operating cost: approximately \$10--28\,M.
 
@@ -919,6 +983,8 @@ thermal-vacuum and vibration tests in parallel.
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Compressed 10-month project schedule to Easter 2027 first light}
+\label{tab:timeline}
 \begin{tabular}{clp{7cm}}
 \toprule
 \textbf{Month} & \textbf{Milestone} & \textbf{Deliverables} \\
@@ -976,6 +1042,8 @@ moment Starship is.
 
 \begin{table*}[!ht]
 \centering\small
+\caption{Risk register}
+\label{tab:risks}
 \begin{tabular}{p{4cm}lp{4.5cm}l}
 \toprule
 \textbf{Risk} & \textbf{Severity} & \textbf{Mitigation} & \textbf{Status} \\
