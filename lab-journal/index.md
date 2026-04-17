@@ -10,7 +10,7 @@ It makes the notebook navigable years later and serves as the front-matter every
 | Date | File | Key Topics | Milestone / Phase |
 |------|------|------------|-------------------|
 | 2026-04-17 | [journal-2026-04-17.md](journal-2026-04-17.md) | Project foundation; optical design; Starship-as-base architecture; SolAero IMM-α; Amprius battery; Sunday operation; cost structure; repo reorganization; lab journal setup | Foundation complete — commit d8736e1 |
-| 2026-04-17b | [journal-2026-04-17b.md](journal-2026-04-17b.md) | External review corrections: SHG stage (30% wall-plug); IMM-α 32% BOL; 50 m² array; eclipse 124 hr dual-mode; power budget 20 kW; mass 1,403 kg; 39% reduction; new sections: Lunar Surface Environment, Risks; LaTeX compiled 26 pages | Technical corrections complete |
+| 2026-04-17b | [journal-2026-04-17b.md](journal-2026-04-17b.md) | External review corrections: SHG stage (30% wall-plug); IMM-α 32% BOL; 50 m² array; eclipse 124 hr dual-mode; power budget 20 kW; mass 1,403 kg; 39% reduction; new sections: Lunar Surface Environment, Risks; LaTeX compiled 26 pages | Technical corrections complete — commit 3e1bc58 |
 
 ---
 
