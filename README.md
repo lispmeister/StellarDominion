@@ -1,6 +1,6 @@
 # Stellar Dominion
 
-[![Pylint](https://github.com/lispmeister/lunar-cross/actions/workflows/pylint.yml/badge.svg)](https://github.com/lispmeister/lunar-cross/actions/workflows/pylint.yml)
+[![Pylint](https://github.com/lispmeister/StellarDominion/actions/workflows/pylint.yml/badge.svg)](https://github.com/lispmeister/StellarDominion/actions/workflows/pylint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%20|%203.9%20|%203.10-blue)](prototype/lunar-cross-visualization.py)
 
