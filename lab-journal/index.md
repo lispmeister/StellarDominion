@@ -4,11 +4,12 @@ This is the central Table of Contents for the lab journal, following Howard M. K
 It makes the notebook navigable years later and serves as the front-matter every good notebook requires.
 
 **Last updated:** 2026-04-17
-**Total entries:** 0 (plus this index)
+**Total entries:** 1 (plus this index)
 **How to maintain:** Add a new row every time you create a journal file. Keep the table sorted chronologically.
 
 | Date | File | Key Topics | Milestone / Phase |
 |------|------|------------|-------------------|
+| 2026-04-17 | [journal-2026-04-17.md](journal-2026-04-17.md) | Project foundation; optical design; Starship-as-base architecture; SolAero IMM-α; Amprius battery; Sunday operation; cost structure; repo reorganization; lab journal setup | Foundation complete — commit d8736e1 |
 
 ---
 
