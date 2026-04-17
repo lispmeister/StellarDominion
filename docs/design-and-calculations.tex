@@ -2,15 +2,16 @@
 % Design and Calculations Document
 % Compile: pdflatex design-and-calculations.tex (run twice for references)
 
-\documentclass[12pt,letterpaper]{article}
+\documentclass[10pt,letterpaper]{article}
 
 % ── Packages ──────────────────────────────────────────────────────────────────
-\usepackage[margin=1.2in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{siunitx}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{listingsutf8}
@@ -27,6 +28,8 @@
 
 % ── Fix fancyhdr headheight ───────────────────────────────────────────────────
 \setlength{\headheight}{14.5pt}
+\setlength{\columnsep}{14pt}
+\setlength{\emergencystretch}{3em}
 
 % ── Colors ────────────────────────────────────────────────────────────────────
 \definecolor{emerald}{RGB}{0,160,100}
@@ -49,6 +52,8 @@
 % ── Section title formatting ──────────────────────────────────────────────────
 \titleformat{\section}{\large\bfseries\color{moonblue}}{}{0em}{}[\color{emerald}\rule{\linewidth}{0.6pt}]
 \titleformat{\subsection}{\normalsize\bfseries\color{moonblue}}{}{0em}{}
+\titlespacing*{\section}{0pt}{12pt plus 4pt minus 2pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt plus 3pt minus 2pt}{4pt}
 
 % ── Code listing style ─────────────────────────────────────────────────────────
 \lstdefinestyle{python}{
@@ -165,7 +170,7 @@ of operations is \$72--192 million.
 \end{abstract}
 
 \tableofcontents
-\newpage
+\twocolumn
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{A Cathedral on the Moon}
@@ -198,7 +203,7 @@ development. What is missing is the will to build something this audacious.
 \subsection{Mission Parameters at a Glance}
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabularx}{\linewidth}{XX}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\
 \midrule
@@ -214,7 +219,7 @@ Design life & 10 years \\
 Core project cost (excl.\ launch) & \$42--114 million \\
 Total lifecycle cost (incl.\ launch + ops) & \$72--192 million \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -230,7 +235,7 @@ human presence is needed after commissioning.
 \subsection{What Starship Provides for Free}
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Resource} & \textbf{Benefit} \\
 \midrule
@@ -241,13 +246,13 @@ Power bus & Shared Starship HLS infrastructure \\
 Comms & S-band/Ku-band supplemented by minimal custom avionics \\
 Structural durability & Stainless steel in vacuum; effectively indefinite life \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \subsection{Stellar Dominion Subsystems}
 
 \begin{center}
-\begin{tabular}{lll}
+\begin{tabularx}{\linewidth}{lXX}
 \toprule
 \textbf{Subsystem} & \textbf{Function} & \textbf{Key spec} \\
 \midrule
@@ -261,7 +266,7 @@ Radiator panels & Reject laser waste heat & \SI{20}{\meter\squared}, hull-mounte
 Pointing assembly & Track Earth as Moon orbits & $< \ang{0.1}$ accuracy \\
 Avionics + comms & Housekeeping, telemetry & Minimal custom; shares Starship \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -281,7 +286,7 @@ of $\approx$25--35\% (baseline: 30\%). This is an engineering development task, 
 solution.
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\
 \midrule
@@ -293,7 +298,7 @@ Beam quality & $M^2 < 1.2$ \\
 Rated lifetime & $> \num{100000}$ hours ($\approx$ 11 years) \\
 Mass (including SHG) & \SI{200}{\kilo\gram}--\SI{300}{\kilo\gram} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \subsection{Radiometric Power Requirement}
@@ -309,11 +314,11 @@ green source:
 The cross consists of two arms, each \ang{0.7} long and \ang{0.05} thick. The
 solid angle of each arm is:
 
-\[
-  \Omega_{\text{arm}} = \left(\ang{0.7} \times \frac{\pi}{\ang{180}}\right)
-                       \times \left(\ang{0.05} \times \frac{\pi}{\ang{180}}\right)
-                      = 1.06 \times 10^{-5}\ \si{\steradian}
-\]
+\begin{align*}
+  \Omega_{\text{arm}} &= \left(\ang{0.7} \times \frac{\pi}{\ang{180}}\right)
+                       \times \left(\ang{0.05} \times \frac{\pi}{\ang{180}}\right) \\
+                      &= 1.06 \times 10^{-5}\ \si{\steradian}
+\end{align*}
 
 Total solid angle of the cross (two arms, minus small central overlap):
 
@@ -361,7 +366,7 @@ is listed in Section~\ref{sec:code-doe}.
 \subsection{Angular Geometry}
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Quantity} & \textbf{Value} \\
 \midrule
@@ -372,7 +377,7 @@ Cross total span & \ang{0.7} (covers US with margin) \\
 Cross arm thickness & \ang{0.05} \\
 Moon apparent diameter & \ang{0.5} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -402,7 +407,7 @@ path. This eliminates the largest single mass item in traditional space solar
 arrays.
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\
 \midrule
@@ -411,14 +416,14 @@ Cell efficiency & 32\% (AM0, beginning of life) \\
 Areal density & \SI{2}{\kilo\gram\per\meter\squared} deployed \\
 Deployment & Rollout panels unfurling from Starship hull \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \begin{align}
   P_{\text{required}} &\approx \SI{20}{\kilo\watt} \quad \text{(see power budget)} \\
   \eta_{\text{cell}}  &= 0.32 \quad \text{(SolAero IMM-$\alpha$, BOL)} \\
-  P_{\text{array}}    &= G_{\odot} \cdot \eta \cdot A
-    = 1361 \times 0.32 \times A = 435\, A\ \si{\watt\per\meter\squared}
+  P_{\text{array}}    &= G_{\odot} \cdot \eta \cdot A \notag \\
+    &= 1361 \times 0.32 \times A = 435\, A\ \si{\watt\per\meter\squared}
 \end{align}
 
 Setting $P_{\text{array}} \geq \SI{20}{\kilo\watt}$ (with degradation margin):
@@ -446,16 +451,17 @@ We baseline \textbf{Amprius SiCore} silicon-anode lithium-ion cells---the
 highest energy-density Li-ion cells commercially available. Amprius already
 ships to aerospace and defense customers~\cite{Amprius}.
 
-\begin{center}
-\begin{tabular}{llp{5cm}}
+\begin{table*}[!ht]
+\centering\small
+\begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Level} & \textbf{Energy density} & \textbf{Notes} \\
 \midrule
 Cell & \SI{400}{\watt\hour\per\kilo\gram} & Amprius SiCore, shipping \\
 Pack (custom vacuum-rated) & $\sim$\SI{280}{\watt\hour\per\kilo\gram} & 70\% cell-to-pack; radiative cooling, composite enclosure, BMS \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+\end{table*}
 
 \subsection{Battery Sizing (Eclipse Bridging)}
 
@@ -465,23 +471,23 @@ The laser shuts down during eclipses (no observer sees an eclipsed Moon). Batter
 sustains avionics and thermal survival only, in two modes:
 
 \begin{center}
-\begin{tabular}{lll}
+\begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Mode} & \textbf{Load} & \textbf{Conditions} \\
 \midrule
 Full survival & $\sim$\SI{1}{\kilo\watt} & Short eclipses ($\leq$72\,hr): full avionics + heaters \\
 Hibernation & $\sim$\SI{500}{\watt} & Extended eclipses ($>$72\,hr): battery heat + avionics keep-alive \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 The system uses ephemeris to predict eclipse duration before entry and selects the
 appropriate mode. Battery capacity (unchanged):
 
-\[
-  E_{\text{capacity}} = \SI{90}{\kilo\watt\hour}
-  \quad \rightarrow \quad E_{\text{usable}} = 90 \times 0.80 = \SI{72}{\kilo\watt\hour}
-\]
+\begin{align*}
+  E_{\text{capacity}} &= \SI{90}{\kilo\watt\hour} \\
+  E_{\text{usable}}   &= 90 \times 0.80 = \SI{72}{\kilo\watt\hour}
+\end{align*}
 
 \[
   \text{At \SI{500}{\watt} (hibernation):}\quad
@@ -497,8 +503,9 @@ At \SI{280}{\watt\hour\per\kilo\gram} pack-level (Amprius):
 
 \subsection{Power Budget}
 
-\begin{center}
-\begin{tabular}{lrr}
+\begin{table*}[!ht]
+\centering\small
+\begin{tabularx}{\linewidth}{Xrr}
 \toprule
 \textbf{Subsystem} & \textbf{Power (W)} & \textbf{Notes} \\
 \midrule
@@ -510,8 +517,8 @@ Thermal heaters & 500 & Laser pre-heating during cold periods \\
 \midrule
 \textbf{Total} & \textbf{19\,800} & $\approx$\,\SI{20}{\kilo\watt} \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+\end{table*}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Thermal Management}
@@ -523,10 +530,10 @@ The laser subsystem (IR source + SHG stage) produces 12\,kW of waste heat
 (electrical input minus optical output). Combined with avionics, total heat
 rejection is:
 
-\[
-  Q_{\text{total}} = P_{\text{elec}} - P_{\text{opt}} + P_{\text{avionics}}
-                   \approx 17\,000 - 5\,000 + 500 = \SI{12.5}{\kilo\watt}
-\]
+\begin{align*}
+  Q_{\text{total}} &= P_{\text{elec}} - P_{\text{opt}} + P_{\text{avionics}} \\
+                   &\approx 17\,000 - 5\,000 + 500 = \SI{12.5}{\kilo\watt}
+\end{align*}
 
 \subsection{Radiator Sizing}
 
@@ -558,7 +565,8 @@ where $\varepsilon = 0.85$ (black anodized aluminum), $\sigma =
 \section{Mass Budget}
 % ─────────────────────────────────────────────────────────────────────────────
 
-\begin{center}
+\begin{table*}[!ht]
+\centering\small
 \begin{tabular}{lrp{5.5cm}}
 \toprule
 \textbf{Subsystem} & \textbf{Mass (kg)} & \textbf{Basis} \\
@@ -577,7 +585,7 @@ Deployable boom (3--5\,m) & 75 & Carbon composite + gimbal interface \\
 \textbf{Total} & \textbf{1\,403} & \textbf{$\approx$\,1.4 tonnes} \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 
 \noindent At \SI{1.4}{\tonne}---a 39\% reduction over the standalone pallet
 architecture---the Stellar Dominion hardware is a small fraction of Starship
@@ -601,11 +609,11 @@ and the vehicle becomes the operational platform. There is no departure.
 \textbf{Height advantage.} With the laser system at $\sim$\SI{50}{\meter}
 (near the top of Starship), the geometric line-of-sight to the horizon is:
 
-\[
-  d_{\text{horizon}} = \sqrt{2 R_{\text{Moon}} h}
-    = \sqrt{2 \times 1\,737\,400 \times 50}
-    \approx \SI{13.2}{\kilo\meter}
-\]
+\begin{align*}
+  d_{\text{horizon}} &= \sqrt{2 R_{\text{Moon}} h}
+    = \sqrt{2 \times 1\,737\,400 \times 50} \\
+    &\approx \SI{13.2}{\kilo\meter}
+\end{align*}
 
 This comfortably clears local terrain, reducing sensitivity to the exact
 landing position within the polar region.
@@ -687,8 +695,9 @@ simple configuration that clears the vehicle body without requiring an overhead
 slew. As Earth drifts slowly across the horizon driven by libration, the gimbal
 compensates with a gentle elevation adjustment well within its travel range.
 
-\begin{center}
-\begin{tabular}{lll}
+\begin{table*}[!ht]
+\centering\small
+\begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Component} & \textbf{Spec} & \textbf{Heritage} \\
 \midrule
@@ -698,8 +707,8 @@ Ephemeris & JPL DE430 & Pre-loaded + uplink corrections \\
 Update rate & \SI{1}{\hertz} & Earth moves $\ang{0.004}$/s in lunar sky \\
 Required accuracy & $< \ang{0.1}$ & Cross arm is \ang{0.7} wide \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+\end{table*}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Visibility Analysis}
@@ -726,8 +735,9 @@ tilted away, the beam geometry is unchanged---the cross still covers the US.
 
 \subsection{Monthly Visible Hours (Mid-Latitude US Observer)}
 
-\begin{center}
-\begin{tabular}{llrr}
+\begin{table*}[!ht]
+\centering\small
+\begin{tabularx}{\linewidth}{lXrr}
 \toprule
 \textbf{Phase} & \textbf{Sky condition} & \textbf{Hours/night} & \textbf{Nights/month} \\
 \midrule
@@ -738,8 +748,8 @@ Crescent & Poor & $<$2 & few \\
 \midrule
 \multicolumn{2}{l}{\textbf{Useful viewing hours per month}} & \multicolumn{2}{r}{\textbf{$\approx$\,30--50 hours}} \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+\end{table*}
 
 The cross is most spectacular at full Moon---when all 330 million Americans can
 look up simultaneously and see the same light.
@@ -760,16 +770,17 @@ One might propose a smaller solar array ($\sim$\SI{7}{\meter\squared}) that
 charges a larger battery all week, discharging on Sunday. With SolAero panels
 at \SI{2}{\kilo\gram\per\meter\squared}, the baseline wins decisively:
 
-\begin{center}
-\begin{tabular}{lrrr}
+\begin{table*}[!ht]
+\centering\small
+\begin{tabularx}{\linewidth}{Xrrr}
 \toprule
 \textbf{Architecture} & \textbf{Solar (kg)} & \textbf{Battery (kg)} & \textbf{Total (kg)} \\
 \midrule
 Baseline (50\,m$^2$ SolAero + survival battery) & 100 & 325 & 425 \\
 Small solar + burst battery (7\,m$^2$ SolAero) & 14 & 675 & 689 \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+\end{table*}
 
 \noindent The baseline is \textbf{264\,kg lighter}---the opposite of a wash.
 SolAero's low areal density makes large arrays cheap on mass, so the
@@ -780,7 +791,7 @@ kept as-is.
 \subsection{Benefits of Sunday-Only Operation}
 
 \begin{center}
-\begin{tabular}{lp{8cm}}
+\begin{tabularx}{\linewidth}{lX}
 \toprule
 \textbf{Benefit} & \textbf{Impact} \\
 \midrule
@@ -789,7 +800,7 @@ Thermal cycling & Reduced stress on optics and laser diodes \\
 Ground operations & Sunday-only monitoring saves \$5--10M over 10 years \\
 Narrative resonance & The cross appears on the Sabbath; Easter Sunday is the natural inaugural event \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -800,7 +811,8 @@ All figures in 2025 USD. Ranges reflect uncertainty between COTS and
 space-qualified component pricing (typically $5\times$--$20\times$ premium for
 space qualification).
 
-\begin{center}
+\begin{table*}[!ht]
+\centering\small
 \begin{tabular}{lrrl}
 \toprule
 \textbf{Item} & \textbf{Low (\$M)} & \textbf{High (\$M)} & \textbf{Basis} \\
@@ -828,7 +840,7 @@ Starship lunar cargo flight & 20 & 50 & SpaceX projected lunar cargo pricing \\
 \textbf{Grand total} & \textbf{62} & \textbf{164} & \textbf{$\approx$\,\$60--165M} \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 
 \noindent The core project---the projector, energy system, and Starship
 modifications---costs \textbf{\$42--114M}. Launch is a separable line item:
@@ -849,8 +861,9 @@ contract---and would be seen by orders of magnitude more people.
 
 \subsection{Component Lifetimes}
 
-\begin{center}
-\begin{tabular}{llp{5.5cm}}
+\begin{table*}[!ht]
+\centering\small
+\begin{tabularx}{\linewidth}{llX}
 \toprule
 \textbf{Component} & \textbf{Rated Life} & \textbf{Notes} \\
 \midrule
@@ -861,15 +874,15 @@ Avionics & 10--15 years & Radiation-hardened design \\
 DOE (passive optic) & Indefinite & No moving parts; vacuum-stable \\
 Pointing gimbal & 7--10 years & Wear item; oversize for life margin \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+\end{table*}
 
 \textbf{Mission design life: 10 years.}
 
 \subsection{Annual Operating Costs (Sunday Operation Mode)}
 
 \begin{center}
-\begin{tabular}{lrr}
+\begin{tabularx}{\linewidth}{Xrr}
 \toprule
 \textbf{Item} & \textbf{Low (\$/yr)} & \textbf{High (\$/yr)} \\
 \midrule
@@ -880,7 +893,7 @@ Contingency & 150\,000 & 300\,000 \\
 \midrule
 \textbf{Annual total} & \textbf{1\,000\,000} & \textbf{2\,800\,000} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \noindent Ten-year operating cost: approximately \$10--28\,M.
@@ -904,7 +917,8 @@ starting April 2026. Compression is achieved by ordering the laser at kickoff,
 overlapping integration with late hardware deliveries, and running
 thermal-vacuum and vibration tests in parallel.
 
-\begin{center}
+\begin{table*}[!ht]
+\centering\small
 \begin{tabular}{clp{7cm}}
 \toprule
 \textbf{Month} & \textbf{Milestone} & \textbf{Deliverables} \\
@@ -922,7 +936,7 @@ thermal-vacuum and vibration tests in parallel.
 L+30\,d & \textbf{First Light} & \textbf{Easter Sunday, April 1, 2027} \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 
 \noindent \textbf{Schedule compression premium:} +\$8--20M (overtime, parallel
 streams, expedited shipping, higher contingency).
@@ -960,7 +974,8 @@ moment Starship is.
 \section{Risks and Open Issues}
 % ─────────────────────────────────────────────────────────────────────────────
 
-\begin{center}
+\begin{table*}[!ht]
+\centering\small
 \begin{tabular}{p{4cm}lp{4.5cm}l}
 \toprule
 \textbf{Risk} & \textbf{Severity} & \textbf{Mitigation} & \textbf{Status} \\
@@ -975,7 +990,7 @@ IMM-$\alpha$ availability & Low & Rocket Lab commercial supplier; 50\,m$^2$ feas
 First-light verification & Low & US ground stations + citizen-science network & Ops planning \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Visualization}
@@ -986,7 +1001,7 @@ the cross as it would appear to a US observer: the Moon at its exact
 \ang{0.5} apparent diameter, with the \ang{0.7} cross centered at the northern
 limb, rendered at true angular proportions.
 
-\begin{figure}[h]
+\begin{figure*}[ht]
   \centering
   \includegraphics[width=0.85\textwidth]{images/lunar_cross_scientific_visualization_proper_cross.png}
   \caption{Scientifically accurate sky visualization. The Moon (0.5° apparent
@@ -994,11 +1009,12 @@ limb, rendered at true angular proportions.
     (\ang{0.7} total span, \ang{0.05} arm thickness) originates at the Moon's
     northern limb. A 1° scale bar is shown for reference.}
   \label{fig:visualization}
-\end{figure}
+\end{figure*}
 
 \subsection{Sky Visualization Code}
 \label{sec:code-viz}
 
+\begin{figure*}[!ht]
 \lstinputlisting[
   style=python,
   caption={Sky visualization script (\texttt{lunar-cross-visualization.py}).
@@ -1006,6 +1022,7 @@ limb, rendered at true angular proportions.
     Run with: \texttt{uv run lunar-cross-visualization.py}},
   label=lst:visualization
 ]{../prototype/lunar-cross-visualization.py}
+\end{figure*}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{DOE Pattern Generator}
@@ -1020,6 +1037,7 @@ Output is a grayscale phase mask suitable for printing on transparency film
 (tabletop demo) or fabrication as a surface-relief fused-silica optic (flight
 unit).
 
+\begin{figure*}[!ht]
 \lstinputlisting[
   style=python,
   caption={DOE pattern generator (\texttt{prototype/doe\_pattern.py}).
@@ -1027,6 +1045,7 @@ unit).
     Output: \texttt{doe\_grayscale\_print.png} and \texttt{doe\_binary\_print.png}.},
   label=lst:doe
 ]{../prototype/doe_pattern.py}
+\end{figure*}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Why Build It?}
